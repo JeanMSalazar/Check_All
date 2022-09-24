@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DBP - CheckAll</title>
+    </head>
+
+
+    <body>
+
+    <h1>Computer Science</h1>
+    <h2>Tasks</h2>
+
+     <ol id="dynamic-list"></ol>
+
+    <button onclick="addItem()">add item</button>
+    <input type="text" id="introField"/>
+    <br>
+    <button onclick="removeItem()">remove item</button>
+    <button onclick="SelectAll()">Check All</button>
+
+
+    <script>
+
+    var ul = document.getElementById("dynamic-list");
+    var userEntry = document.getElementById("introField");
+
+
+
+    function addItem(){
+
+        var li = document.createElement("li");
+        var check = document.createElement("input");
+        check.type = "checkbox";
+         var items = document.querySelectorAll('#dynamic-list li');
+        ul.appendChild(li);
+        li.appendChild(check);
+
+    for (i = 0; i < items.length; i++) {
+        li.setAttribute('id','box'+[i]);
+        li.setAttribute('class','item');
+        check.setAttribute('class','chk');
+        li.appendChild(document.createTextNode(userEntry.value));
+        }
+    }
+
+function SelectAll(){
+    var items = document.querySelectorAll('#dynamic-list li');
+    var box = document.getElementsByClassName('chk');
+
+    for(i = 0; i < items.length; i++) {
+      if (box[i].checked==false){
+        box[i].checked = true;
+      }
+    }
+}
+
+function removeItem(){
+    var items = document.querySelectorAll('#dynamic-list li');
+    var box = document.getElementsByClassName('chk');
+
+    for(i = 0; i < items.length; i++) {
+      if (box[i].checked==true){
+        items[i].parentNode.removeChild(items[i]);
+      }
+    }
+}
+    </script>
+    </body>
+    </html>
